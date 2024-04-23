@@ -2,6 +2,18 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
+namespace ElementalityNamespace
+{
+    public enum ElementalityType
+    {
+        LIFE,
+        STONE,
+        FIRE,
+        WATER,
+        EARTH
+    }
+}
+
 [Serializable]
 public class Elementality
 {
