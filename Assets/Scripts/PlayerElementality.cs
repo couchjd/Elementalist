@@ -32,16 +32,47 @@ public class PlayerElementality : MonoBehaviour
     {
         foreach (Elementality elementality in m_near_elements)
         {
-            switch (elementality_type) 
+            if (elementality != null)
             {
-                case ElementalityType.LIFE:
+                switch (elementality_type)
                 {
-                    if (elementality != null && elementality.Life > 0)
+                    case ElementalityType.LIFE:
                     {
-                        elementality.Life--;
-                        m_curr_elementality.Life--;
+                        if (elementality.Life > 0)
+                        {
+                            elementality.Life--;
+                            m_curr_elementality.Life++;
+                        }
+                        break;
                     }
-                    break;
+                    case ElementalityType.WATER:
+                    {
+                        if (elementality.Water > 0)
+                        {
+                            elementality.Water--;
+                            m_curr_elementality.Water++;
+                        }
+                        break;
+                    }
+                    case ElementalityType.EARTH:
+                    {
+
+                        break;
+                    }
+                    case ElementalityType.FIRE:
+                    {
+
+                        break;
+                    }
+                    case ElementalityType.STONE:
+                    {
+
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
                 }
             }
         }
