@@ -42,6 +42,11 @@ public class PlayerElementality : MonoBehaviour
 
     public void Draw(ElementalityType elementality_type)
     {
+        float type_count = m_elem_types_count[elementality_type];
+        float draw_strength = 1.0f;
+
+        float draw_amount = draw_strength / type_count;
+
         foreach (Elementality elementality in m_near_elements)
         {
             if (elementality != null)
@@ -52,8 +57,8 @@ public class PlayerElementality : MonoBehaviour
                     {
                         if (elementality.Life > 0)
                         {
-                            elementality.Life--;
-                            m_curr_elementality.Life++;
+                            elementality.Life -= draw_amount;
+                            m_curr_elementality.Life += draw_amount;
                         }
                         break;
                     }
@@ -61,8 +66,8 @@ public class PlayerElementality : MonoBehaviour
                     {
                         if(elementality.Death > 0)
                         {
-                            elementality.Death--;
-                            m_curr_elementality.Death++;
+                            elementality.Death -= draw_amount;
+                            m_curr_elementality.Death += draw_amount;
                         }
                         break;
                     }
@@ -70,8 +75,8 @@ public class PlayerElementality : MonoBehaviour
                     {
                         if(elementality.Earth > 0)
                         {
-                            elementality.Earth--;
-                            m_curr_elementality.Earth++;
+                            elementality.Earth -= draw_amount;
+                            m_curr_elementality.Earth += draw_amount;
                         }
                         break;
                     }
@@ -79,8 +84,8 @@ public class PlayerElementality : MonoBehaviour
                     {
                         if(elementality.Air > 0)
                         {
-                            elementality.Air--;
-                            m_curr_elementality.Air++;
+                            elementality.Air -= draw_amount;
+                            m_curr_elementality.Air += draw_amount;
                         }
                         break;
                     }
@@ -88,8 +93,8 @@ public class PlayerElementality : MonoBehaviour
                     {
                         if(elementality.Fire > 0)
                         {
-                            elementality.Fire--;
-                            m_curr_elementality.Fire++;
+                            elementality.Fire -= draw_amount;
+                            m_curr_elementality.Fire += draw_amount;
                         }
                         break;
                     }
@@ -97,8 +102,8 @@ public class PlayerElementality : MonoBehaviour
                     {
                         if (elementality.Water > 0)
                         {
-                            elementality.Water--;
-                            m_curr_elementality.Water++;
+                            elementality.Water -= draw_amount;
+                            m_curr_elementality.Water += draw_amount;
                         }
                         break;
                     }
@@ -115,11 +120,27 @@ public class PlayerElementality : MonoBehaviour
     {
         m_near_elements.Add(elementality);
         m_curr_elementality += elementality;
+
+        List<ElementalityType> elementality_types = elementality.GetElementalityTypes();
+        foreach(ElementalityType type in elementality_types)
+        {
+            m_elem_types_count[type]++;
+        }
     }
 
     public void RemoveElementality(ref Elementality elementality)
     {
         m_near_elements.Remove(elementality);
         m_curr_elementality -= elementality;
+
+        List<ElementalityType> elementality_types = elementality.GetElementalityTypes();
+        foreach (ElementalityType type in elementality_types)
+        {
+            m_elem_types_count[type]--;
+            if (m_elem_types_count[type] < 0)
+            {
+                m_elem_types_count[type] = 0;
+            }
+        }
     }
 }

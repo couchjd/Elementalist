@@ -1,4 +1,6 @@
+using ElementalityNamespace;
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -54,6 +56,38 @@ public class Elementality
     public float Fire { get { return m_fire; } set { m_fire = value; } }
     public float Water { get { return m_water; } set { m_water = value; } }
     
+    public List<ElementalityType> GetElementalityTypes()
+    {
+        List<ElementalityType> elementality_types = new List<ElementalityType>();
+
+        if(m_life > 0)
+        {
+            elementality_types.Add(ElementalityType.LIFE);
+        }
+        if(m_death > 0)
+        {
+            elementality_types.Add(ElementalityType.DEATH);
+        }
+        if(m_earth > 0)
+        {
+            elementality_types.Add(ElementalityType.EARTH);
+        }
+        if(m_air > 0)
+        {
+            elementality_types.Add(ElementalityType.AIR);
+        }
+        if(m_fire > 0)
+        {
+            elementality_types.Add(ElementalityType.FIRE);
+        }
+        if(m_water > 0)
+        {
+            elementality_types.Add(ElementalityType.WATER);
+        }
+
+        return elementality_types;
+    }
+
     public static Elementality operator -(Elementality a, Elementality b)
     => new Elementality(a.Life - b.Life, a.Death - b.Death, a.Earth - b.Earth, a.Air - b.Air, a.Fire - b.Fire, a.Water - b.Water); 
         
