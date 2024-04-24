@@ -4,7 +4,7 @@ public class Element : MonoBehaviour
 {
 
     [SerializeField]
-    private Elementality elementality;
+    private Elementality m_elementality;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,7 +15,7 @@ public class Element : MonoBehaviour
             PlayerElementality player_elementality = other.GetComponent<PlayerElementality>();
             if(player_elementality != null)
             {
-                player_elementality.AddElementality(ref elementality);
+                player_elementality.AddElementality(ref m_elementality);
             }
         }
         else
@@ -33,7 +33,7 @@ public class Element : MonoBehaviour
             PlayerElementality player_elementality = other.GetComponent<PlayerElementality>();
             if (player_elementality != null)
             {
-                player_elementality.RemoveElementality(ref elementality);
+                player_elementality.RemoveElementality(ref m_elementality);
             }
         }
     }

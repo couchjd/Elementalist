@@ -14,10 +14,22 @@ public class PlayerElementality : MonoBehaviour
     [SerializeField]
     private Elementality m_max_elementality;
 
+    private Dictionary<ElementalityType, int> m_elem_types_count;
+
     private void Start()
     {
-        m_curr_elementality = new Elementality(0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-        m_max_elementality = new Elementality(100.0f, 100.0f, 100.0f, 100.0f, 100.0f);
+        m_elem_types_count = new Dictionary<ElementalityType, int>()
+        {
+            { ElementalityType.LIFE, 0 },
+            { ElementalityType.DEATH, 0 },
+            { ElementalityType.EARTH, 0 },
+            { ElementalityType.AIR, 0 },
+            { ElementalityType.FIRE, 0 },
+            { ElementalityType.WATER, 0 }
+        };
+
+        m_curr_elementality = new Elementality(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+        m_max_elementality = new Elementality(100.0f, 100.0f, 100.0f, 100.0f, 100.0f, 100.0f);
     }
 
     void Update()
@@ -45,6 +57,42 @@ public class PlayerElementality : MonoBehaviour
                         }
                         break;
                     }
+                    case ElementalityType.DEATH:
+                    {
+                        if(elementality.Death > 0)
+                        {
+                            elementality.Death--;
+                            m_curr_elementality.Death++;
+                        }
+                        break;
+                    }
+                    case ElementalityType.EARTH:
+                    {
+                        if(elementality.Earth > 0)
+                        {
+                            elementality.Earth--;
+                            m_curr_elementality.Earth++;
+                        }
+                        break;
+                    }
+                    case ElementalityType.AIR:
+                    {
+                        if(elementality.Air > 0)
+                        {
+                            elementality.Air--;
+                            m_curr_elementality.Air++;
+                        }
+                        break;
+                    }
+                    case ElementalityType.FIRE:
+                    {
+                        if(elementality.Fire > 0)
+                        {
+                            elementality.Fire--;
+                            m_curr_elementality.Fire++;
+                        }
+                        break;
+                    }
                     case ElementalityType.WATER:
                     {
                         if (elementality.Water > 0)
@@ -52,21 +100,6 @@ public class PlayerElementality : MonoBehaviour
                             elementality.Water--;
                             m_curr_elementality.Water++;
                         }
-                        break;
-                    }
-                    case ElementalityType.EARTH:
-                    {
-
-                        break;
-                    }
-                    case ElementalityType.FIRE:
-                    {
-
-                        break;
-                    }
-                    case ElementalityType.STONE:
-                    {
-
                         break;
                     }
                     default:
