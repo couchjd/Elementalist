@@ -55,7 +55,7 @@ public class PlayerElementality : MonoBehaviour
                 {
                     case ElementalityType.LIFE:
                     {
-                        if (elementality.Life > 0)
+                        if (elementality.Life > 0 && m_curr_elementality.Life < m_max_elementality.Life)
                         {
                             elementality.Life -= draw_amount;
                             m_curr_elementality.Life += draw_amount;
@@ -64,7 +64,7 @@ public class PlayerElementality : MonoBehaviour
                     }
                     case ElementalityType.DEATH:
                     {
-                        if(elementality.Death > 0)
+                        if(elementality.Death > 0 && m_curr_elementality.Death < m_max_elementality.Death)
                         {
                             elementality.Death -= draw_amount;
                             m_curr_elementality.Death += draw_amount;
@@ -73,7 +73,7 @@ public class PlayerElementality : MonoBehaviour
                     }
                     case ElementalityType.EARTH:
                     {
-                        if(elementality.Earth > 0)
+                        if(elementality.Earth > 0 && m_curr_elementality.Earth < m_max_elementality.Earth)
                         {
                             elementality.Earth -= draw_amount;
                             m_curr_elementality.Earth += draw_amount;
@@ -82,7 +82,7 @@ public class PlayerElementality : MonoBehaviour
                     }
                     case ElementalityType.AIR:
                     {
-                        if(elementality.Air > 0)
+                        if(elementality.Air > 0 && m_curr_elementality.Air < m_max_elementality.Air)
                         {
                             elementality.Air -= draw_amount;
                             m_curr_elementality.Air += draw_amount;
@@ -91,7 +91,7 @@ public class PlayerElementality : MonoBehaviour
                     }
                     case ElementalityType.FIRE:
                     {
-                        if(elementality.Fire > 0)
+                        if(elementality.Fire > 0 && m_curr_elementality.Fire < m_max_elementality.Fire)
                         {
                             elementality.Fire -= draw_amount;
                             m_curr_elementality.Fire += draw_amount;
@@ -100,7 +100,7 @@ public class PlayerElementality : MonoBehaviour
                     }
                     case ElementalityType.WATER:
                     {
-                        if (elementality.Water > 0)
+                        if (elementality.Water > 0 && m_curr_elementality.Water < m_max_elementality.Water)
                         {
                             elementality.Water -= draw_amount;
                             m_curr_elementality.Water += draw_amount;
