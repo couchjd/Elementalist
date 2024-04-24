@@ -42,6 +42,7 @@ public class PlayerElementality : MonoBehaviour
 
     public void Draw(ElementalityType elementality_type)
     {
+        // Calculate the correct amount to draw from each nearby element
         float type_count = m_elem_types_count[elementality_type];
         float draw_strength = 1.0f;
 
@@ -121,6 +122,8 @@ public class PlayerElementality : MonoBehaviour
         m_near_elements.Add(elementality);
         m_curr_elementality += elementality;
 
+        // Increment the type count for each element in the newly added elementality
+        // This is used to calculate the correct amount to draw from each nearby source.
         List<ElementalityType> elementality_types = elementality.GetElementalityTypes();
         foreach(ElementalityType type in elementality_types)
         {
@@ -133,6 +136,8 @@ public class PlayerElementality : MonoBehaviour
         m_near_elements.Remove(elementality);
         m_curr_elementality -= elementality;
 
+        // Decrement the type count for each element in the newly added elementality
+        // This is used to calculate the correct amount to draw from each nearby source.
         List<ElementalityType> elementality_types = elementality.GetElementalityTypes();
         foreach (ElementalityType type in elementality_types)
         {
