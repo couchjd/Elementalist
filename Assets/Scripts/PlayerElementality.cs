@@ -120,7 +120,7 @@ public class PlayerElementality : MonoBehaviour
     public void AddElementality(ref Elementality elementality)
     {
         m_near_elements.Add(elementality);
-        m_curr_elementality += elementality;
+        //m_curr_elementality += elementality;
 
         // Increment the type count for each element in the newly added elementality
         // This is used to calculate the correct amount to draw from each nearby source.
@@ -134,7 +134,7 @@ public class PlayerElementality : MonoBehaviour
     public void RemoveElementality(ref Elementality elementality)
     {
         m_near_elements.Remove(elementality);
-        m_curr_elementality -= elementality;
+        //m_curr_elementality -= elementality;
 
         // Decrement the type count for each element in the newly added elementality
         // This is used to calculate the correct amount to draw from each nearby source.
